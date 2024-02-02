@@ -165,7 +165,7 @@
     },
     {
       "name": "flutter_native_splash",
-      "rootUri": "file:///C:/Users/Byj/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_native_splash-2.3.9",
+      "rootUri": "file:///C:/Users/Byj/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_native_splash-2.3.10",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -195,7 +195,7 @@
     },
     {
       "name": "image",
-      "rootUri": "file:///C:/Users/Byj/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.1.4",
+      "rootUri": "file:///C:/Users/Byj/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.1.6",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -434,7 +434,7 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-01-20T08:15:49.004403Z",
+  "generated": "2024-02-02T15:43:43.545365Z",
   "generator": "pub",
   "generatorVersion": "3.2.4"
 }

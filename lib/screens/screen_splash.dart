@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen>{
   @override
   void initState() {
     super.initState();
-    Timer(Duration(milliseconds: 2000), (){
+    Timer(Duration(milliseconds: 2000), (){ //splash 화면 보여지는 시간(지금 2초)
       moveScreen();
     });
   }

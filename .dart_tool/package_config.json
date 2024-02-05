@@ -428,13 +428,13 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "splashscreen",
+      "name": "wimf",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-02-02T15:43:43.545365Z",
+  "generated": "2024-02-04T15:58:10.122666Z",
   "generator": "pub",
   "generatorVersion": "3.2.4"
 }

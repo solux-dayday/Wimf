@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return MaterialApp(
-      title: 'splashscreen',
+      title: 'wimf',
       debugShowCheckedModeBanner: false,
       routes: {
         '/index': (context) => IndexScreen(),

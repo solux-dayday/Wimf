@@ -71,7 +71,11 @@ class LoginButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          //그냥 로그인으로 넘어감.
+          //파이어베이스 연동하면 삭제할것!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          Navigator.pushReplacementNamed(context, '/index');
+        },
         child: Text('Login'),
       ),
     );

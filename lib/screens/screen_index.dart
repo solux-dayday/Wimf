@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:splashscreen/tabs/tab_main.dart';
-import 'package:splashscreen/tabs/tab_userpage.dart';
-import 'package:splashscreen/tabs/tab_recipes.dart';
-import 'package:splashscreen/tabs/tab_4.dart';
+import 'package:wimf/tabs/tab_main.dart';
+import 'package:wimf/tabs/tab_userpage.dart';
+import 'package:wimf/tabs/tab_recipes.dart';
+import 'package:wimf/tabs/tab_4.dart';
 
 
 class IndexScreen extends StatefulWidget {
@@ -20,19 +20,18 @@ class _IndexScreenState extends State<IndexScreen> {
   int _currentIndex = 0;
 
   final List<Widget> tabs = [
-    TabFour(),
-    TabMain(),
     TabRecipes(),
+    TabMain(),
     TabUserpage(),
+    TabFour(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        iconSize: 44,
+        iconSize: 35,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         selectedLabelStyle: TextStyle(fontSize: 12),

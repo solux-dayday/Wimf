@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:wimf/tabs/tab_main.dart';
 import 'package:wimf/tabs/tab_userpage.dart';
 import 'package:wimf/tabs/tab_recipes.dart';
-import 'package:wimf/tabs/tab_4.dart';
 
 
 class IndexScreen extends StatefulWidget {
@@ -23,7 +22,6 @@ class _IndexScreenState extends State<IndexScreen> {
     TabRecipes(),
     TabMain(),
     TabUserpage(),
-    TabFour(),
   ];
 
   @override
@@ -42,9 +40,8 @@ class _IndexScreenState extends State<IndexScreen> {
           });
         },
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'search'),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'cart'),
+          BottomNavigationBarItem(icon: Icon(Icons.library_books), label: 'Recipe'),
+          BottomNavigationBarItem(icon: Icon(Icons.kitchen), label: 'Fridge'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'profile'),
         ],
       ),

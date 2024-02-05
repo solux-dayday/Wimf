@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/screen_index.dart';
 import 'screens/screen_splash.dart';
 import 'screens/screen_login.dart';
-import 'screens/screen_register.dart';
+import 'screens/screen_signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/index': (context) => IndexScreen(),
         '/login': (context) => LoginScreen(),
-        '/register' : (context) => RegisterScreen(),
+        '/register' : (context) => SignUpScreen(),
         '/splash': (context) => SplashScreen(),
       },
       initialRoute: '/splash',

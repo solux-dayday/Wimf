@@ -40,8 +40,8 @@ class _IndexScreenState extends State<IndexScreen> {
           });
         },
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.library_books), label: 'Recipe'),
           BottomNavigationBarItem(icon: Icon(Icons.kitchen), label: 'Fridge'),
+          BottomNavigationBarItem(icon: Icon(Icons.library_books), label: 'Recipe'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'profile'),
         ],
       ),

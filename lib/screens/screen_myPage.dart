@@ -2,14 +2,6 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-void main() {
-  runApp(
-    MaterialApp(
-      home: CalendarPage(),
-    ),
-  );
-}
-
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);
 
@@ -113,7 +105,7 @@ class _CalendarPageState extends State<CalendarPage> {
               firstDay: DateTime.utc(2010, 10, 16),
               lastDay: DateTime.utc(2030, 3, 14),
               focusedDay: DateTime.now(),
-              headerVisible: false,
+              // headerVisible: false,
               calendarStyle: CalendarStyle(
                 weekendTextStyle: TextStyle(color: Colors.grey),
                 markerSize: 10.0,

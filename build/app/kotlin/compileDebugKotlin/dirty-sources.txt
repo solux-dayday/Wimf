@@ -1,1 +1,0 @@
-C:\dev\wimf\Wimf\android\app\src\main\kotlin\com\example\splashscreen\MainActivity.kt

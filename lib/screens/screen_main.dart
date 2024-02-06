@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wimf/screens/screen_main_ingredient.dart';
 
-void main() {
-  runApp(MyApp());
-}
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Basic App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MainView(),
-    );
-  }
-}
 
 class MainView extends StatefulWidget {
   @override
@@ -112,11 +96,11 @@ class BodyContent extends StatelessWidget {
 
 class RoundedBox extends StatelessWidget {
   final List<Map<String, dynamic>> ingredients = [
-    {"image": "images/icon/eggCircle.png", "name": "계란", "expiration": "2024-04-05", "count": 3},
-    {"image": "images/icon/fishCircle.png", "name": "생선", "expiration": "2024-02-08", "count": 3},
-    {"image": "images/icon/meatCircle.png", "name": "돼지고기", "expiration": "2024-02-08", "count": 3},
-    {"image": "images/icon/vegeCircle.png", "name": "당근", "expiration": "2024-02-14", "count": 3},
-    {"image": "images/icon/milkCircle.png", "name": "우유", "expiration": "2024-02-17", "count": 3},
+    {"image": "assets/images/icon/eggCircle.png", "name": "계란", "expiration": "2024-04-05", "count": 3},
+    {"image": "assets/images/icon/fishCircle.png", "name": "생선", "expiration": "2024-02-08", "count": 3},
+    {"image": "assets/images/icon/meatCircle.png", "name": "돼지고기", "expiration": "2024-02-08", "count": 3},
+    {"image": "assets/images/icon/vegeCircle.png", "name": "당근", "expiration": "2024-02-14", "count": 3},
+    {"image": "assets/images/icon/milkCircle.png", "name": "우유", "expiration": "2024-02-17", "count": 3},
   ];
   @override
   Widget build(BuildContext context) {
@@ -127,7 +111,7 @@ class RoundedBox extends StatelessWidget {
             color: Colors.white,
             borderRadius: BorderRadius.circular(15.0),
           ),
-          height: 650,
+          height: 590,
           width: double.infinity,
         ),
         Positioned(

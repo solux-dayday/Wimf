@@ -79,7 +79,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>{
           //조리 순서 제목
           Text('조리 순서',
           style: TextStyle(
-            fontSize: 20.0,
+            fontSize: 24.0,
             fontWeight: FontWeight.bold,
           ),
           ),
@@ -119,89 +119,57 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>{
 
     Widget ingredientSection(Recipe thisRecipe) {
       return Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               '재료 정보',
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 24.0,
                 fontWeight: FontWeight.bold,
+                color: Colors.blue,
               ),
             ),
             SizedBox(height: 16.0),
-            // 사용된 재료의 총 개수를 절반으로 나누어 2단으로 표시
-            for (int i = 0; i < (thisRecipe.ingredient.length + 1) ~/ 2; i++)
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // 첫 번째 열의 재료 이미지
-                  if (i * 2 < thisRecipe.ingredient.length)
-                    Expanded(
-                      child: Image.asset(
-                        'assets/images/egg.png',
-                        width: 30.0,
-                        height: 30.0,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  SizedBox(width: 0.0), // 이미지와 이름/양 사이의 간격 조절
-                  // 두 번째 열의 재료 정보
-                  if (i * 2 < thisRecipe.ingredient.length)
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            thisRecipe.ingredient[i * 2].name,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '양: ${thisRecipe.food_amount[i * 2]} ${thisRecipe.food_unit[i * 2]}',
-                            style: TextStyle(fontSize: 16.0),
-                          ),
-                        ],
-                      ),
-                    ),
-                  // 두 번째 열이 존재하는 경우에만 다음 행의 첫 번째 열의 재료 이미지 표시
-                  if (i * 2 + 1 < thisRecipe.ingredient.length)
-                    SizedBox(width: 8.0), // 이름/양과 다음 이미지 사이의 간격 조절
-                  if (i * 2 + 1 < thisRecipe.ingredient.length)
-                  // 세 번째 열의 재료 이미지
-                    Expanded(
-                      child: Image.asset(
-                        'assets/images/egg.png', // 두 번째 열의 이미지 경로
-                        width: 30.0,
-                        height: 30.0,
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  // 세 번째 열의 재료 정보
-                  if (i * 2 + 1 < thisRecipe.ingredient.length)
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            thisRecipe.ingredient[i * 2 + 1].name,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            '양: ${thisRecipe.food_amount[i * 2 + 1]} ${thisRecipe.food_unit[i * 2 + 1]}',
-                            style: TextStyle(fontSize: 16.0),
-                          ),
-                        ],
-                      ),
-                    ),
-                ],
+            GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 30.0,
+                mainAxisSpacing: 0.0,
+                childAspectRatio: 4,
               ),
+              itemCount: thisRecipe.ingredient.length,
+              itemBuilder: (context, index) {
+                // null-aware 연산자를 사용하여 null 체크
+                String foodAmount = thisRecipe.food_amount[index].toString() ?? '';
+                String foodUnit = thisRecipe.food_unit[index].toString() ?? '';
+
+                return Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        thisRecipe.ingredient[index],
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8.0), // 아이템 간 간격 조절
+                    Text(
+                      '${foodAmount.toString()} ${foodUnit.toString()}',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
           ],
         ),
       );
@@ -213,7 +181,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>{
       body: ListView(
         children: [
           //레시피 사진
-          Image.asset(
+          Image.network(
             thisRecipe.imageUrl,
             width: appSize.width, //앱 화면 가로 = 사진 가로
             height: 250,

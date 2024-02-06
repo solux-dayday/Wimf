@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "234464526399",
+    "firebase_url": "https://wimf-5a1e6-default-rtdb.firebaseio.com",
+    "project_id": "wimf-5a1e6",
+    "storage_bucket": "wimf-5a1e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234464526399:android:01d457225d8c4d3a68b88a",
+        "android_client_info": {
+          "package_name": "com.example.splashscreen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFIl5J8C9a2x2iuBjzUdZUP1vZJpKJHKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

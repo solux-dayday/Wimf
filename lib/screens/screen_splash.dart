@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -34,18 +33,38 @@ class _SplashScreenState extends State<SplashScreen>{
   @override
   void initState() {
     super.initState();
-    Timer(Duration(milliseconds: 2000), (){ //splash 화면 보여지는 시간(지금 2초)
+    Timer(Duration(milliseconds: 2500), (){ //splash 화면 보여지는 시간(지금 2.5초)
       moveScreen();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        appBar: null,
-        body: Center(
-          child: Text("Wimf"),
-        )
+    return Scaffold(
+      appBar: AppBar(
+        title : null,
+        backgroundColor: Colors.blue,
+      ),
+      backgroundColor: Colors.blue,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/logochef.png', // Make sure to replace 'logo.png' with your actual image file name
+              width: 100, // Adjust the width as needed
+              height: 100, // Adjust the height as needed
+            ),
+            SizedBox(height: 16),
+            Text("Wimf",
+            style: TextStyle(
+              fontWeight: FontWeight.bold, //폰트 굵기 : 진하게
+              color: Colors.white,
+              fontSize: 24,),),
+            SizedBox(height: 100),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,28 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:wimf/models/recipe.dart';
+import 'package:wimf/models/recipe_provider.dart';
 import 'package:wimf/screens/screen_recipe_detail.dart';
+import 'package:provider/provider.dart';
+import 'dart:math';
 
-class LevelThreeRecipeScreen extends StatelessWidget {
+class LevelThreeRecipeScreen extends StatefulWidget {
   const LevelThreeRecipeScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: List.generate(
-        // recipeList에서 레벨 값이 1인 아이템만 필터링
-        recipeList.where((item) => item.level == 3).length,
-            (index) {
-          // 레벨 값이 1인 아이템에 대한 인덱스 계산
-          int originalIndex = recipeList.indexWhere((item) => item.level == 3, index);
+  _LevelThreeRecipeScreenState createState() => _LevelThreeRecipeScreenState();
+}
 
-          return Container(
+class _LevelThreeRecipeScreenState extends State<LevelThreeRecipeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    final recipeProvider = Provider.of<RecipeProvider>(context);
+
+    // Level 1인 레시피만 필터링
+    final levelThreeRecipes = recipeProvider.recipe.where((recipe) => recipe.level == '3').toList();
+
+    return Scaffold(
+      body: recipeProvider.isLoading
+          ? Center(child: CircularProgressIndicator())
+          : ListView(
+        children: List.generate(
+          levelThreeRecipes.length,
+              (index) => Container(
             height: 130.0,
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => RecipeDetailScreen(item: recipeList[originalIndex]),
+                    builder: (context) => RecipeDetailScreen(item: levelThreeRecipes[index]),
                   ),
                 );
               },
@@ -30,8 +41,8 @@ class LevelThreeRecipeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(0.0),
                 child: Row(
                   children: [
-                    Image.asset(
-                      "${recipeList[originalIndex].imageUrl}",
+                    Image.network(
+                      "${levelThreeRecipes[index].imageUrl}",
                       width: 130.0,
                       height: 130.0,
                       fit: BoxFit.cover,
@@ -45,12 +56,12 @@ class LevelThreeRecipeScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                "${recipeList[originalIndex].title}",
+                                "${levelThreeRecipes[index].title}",
                                 style: Theme.of(context).textTheme.titleLarge,
                               ),
                               Row(
                                 children: List.generate(
-                                  recipeList[originalIndex].level,
+                                  min(5, int.parse(levelThreeRecipes[index].level)),
                                       (starIndex) => Icon(
                                     Icons.star,
                                     color: Colors.blue,
@@ -61,18 +72,36 @@ class LevelThreeRecipeScreen extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: 10),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              for (int i = 0; i < recipeList[originalIndex].ingredient.length; i++)
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 5.0),
-                                  child: Text(
-                                    "${recipeList[originalIndex].ingredient[i].name}",
-                                    style: Theme.of(context).textTheme.titleSmall,
+                          Container(
+                            constraints: BoxConstraints(
+                              maxWidth: MediaQuery.of(context).size.width - 160.0,
+                              maxHeight: 100,
+                            ),
+                            child: Wrap(
+                              spacing: 0.0,
+                              runSpacing: 5.0,
+                              children: [
+                                for (int i = 0; i < min(5, levelThreeRecipes[index].ingredient.length); i++)
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 5.0),
+                                    child: Text(
+                                      "${levelThreeRecipes[index].ingredient[i]}",
+                                      style: Theme.of(context).textTheme.titleSmall,
+                                    ),
                                   ),
-                                )
-                            ],
+                                if (levelThreeRecipes[index].ingredient.length > 5)
+                                  GestureDetector(
+                                    onTap: () {
+                                      // 더보기 기능 추가
+                                      // 필요한 작업 수행
+                                    },
+                                    child: Text(
+                                      "...",
+                                      style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.blue),
+                                    ),
+                                  ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -81,8 +110,8 @@ class LevelThreeRecipeScreen extends StatelessWidget {
                 ),
               ),
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }
